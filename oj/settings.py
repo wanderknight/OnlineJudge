@@ -46,7 +46,7 @@ LOCAL_APPS = [
     'announcement',
     'conf',
     'problem',
-    'classgroup'
+    'classgroup',
     'contest',
     'utils',
     'submission',
