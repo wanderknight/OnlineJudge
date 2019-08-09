@@ -673,9 +673,10 @@ class FPSProblemImport(CSRFExemptAPIView):
         form = UploadProblemForm(request.POST, request.FILES)
         if form.is_valid():
             file = form.cleaned_data["file"]
-            with tempfile.NamedTemporaryFile("wb") as tf:
+            with tempfile.NamedTemporaryFile("wb",delete=False) as tf:
                 for chunk in file.chunks(4096):
                     tf.file.write(chunk)
+                tf.close()
                 problems = FPSParser(tf.name).parse()
         else:
             return self.error("Parse upload file error")
