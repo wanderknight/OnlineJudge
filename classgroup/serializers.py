@@ -6,7 +6,7 @@ from .models import Classgroup
 
 
 class ClassgroupSerializer(serializers.ModelSerializer):
-    created_by = UsernameSerializer()
+    # created_by = UsernameSerializer()
 
     class Meta:
         model = Classgroup
