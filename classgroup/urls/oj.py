@@ -6,5 +6,5 @@ from django.conf.urls import url
 from ..views.oj import ClassgroupAPI
 
 urlpatterns = [
-    url(r"^classgroup/?$", ClassgroupAPI.as_view(), name="classgroup_api"),
+    url(r"^classgroups/?$", ClassgroupAPI.as_view(), name="classgroup_api"),
 ]
