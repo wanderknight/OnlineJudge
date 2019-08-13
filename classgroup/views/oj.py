@@ -9,5 +9,5 @@ from classgroup.serializers import ClassgroupSerializer
 
 class ClassgroupAPI(APIView):
     def get(self, request):
-        classgroups = Classgroup.objects.filter(visible=True)
+        classgroups = Classgroup.objects.filter()
         return self.success(self.paginate_data(request, classgroups, ClassgroupSerializer))
