@@ -207,9 +207,9 @@ def redis_config(db):
     }
 
 
-CACHES = {
-    "default": redis_config(db=1)
-}
+# CACHES = {
+#     "default": redis_config(db=1)
+# }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
