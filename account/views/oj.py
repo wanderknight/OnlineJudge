@@ -384,6 +384,14 @@ class UserRankAPI(APIView):
             profiles = profiles.filter(submission_number__gt=0).order_by("-accepted_number", "submission_number")
         else:
             profiles = profiles.filter(total_score__gt=0).order_by("-total_score")
+        # add for 筛选排名
+        myself = request.GET.get("myself")
+        print(request.user)
+        if myself and myself == "1" and request.user.is_authenticated:
+            user_a = User.objects.get(id=request.user.id)
+            classgroup_user_list = user_a.classgroup_set.all()[0].users.all()
+            profiles = profiles.filter(user__in=classgroup_user_list)
+
         return self.success(self.paginate_data(request, profiles, RankInfoSerializer))
 
 
